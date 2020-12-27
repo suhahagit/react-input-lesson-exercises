@@ -10,11 +10,23 @@ constructor() {
     }
 }
 
+handleInput = e => {
+    const {name, value} = e.target
+    this.setState({
+        [name]: value}, () => {
+            console.log(`${this.state.name} selected ${this.state.fruit}`)
+        })
+}
+
 render() {
     return (
         <div>
-            <input id="name-input" />
-            <select id="select-input"></select>
+            <input id="name-input" name = 'name' value = {this.state.name} onChange = {this.handleInput}/>
+            <select name = "fruit" id="select-input" onChange = {this.handleInput} value = {this.state.fruit}>
+                <option value = "apple">Apple</option>
+                <option value = "melon">Melon</option>
+                <option value = "tomato">Tomato</option>
+            </select>
         </div>
     );
 }
